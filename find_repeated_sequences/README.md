@@ -1,4 +1,5 @@
-![alt text](image.png)
+![image](https://github.com/Azitt/Leetcode/assets/32965166/62ea40f0-d948-49a3-b280-0c541acd1b84)
+
 
 Comparison with the First Solution
 First Solution (Naive Approach):
