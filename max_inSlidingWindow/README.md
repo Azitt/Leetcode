@@ -1,10 +1,13 @@
+![alt text](image.png)
 
 1- Initial Setup:
+
 Data Structures Used:
 A deque to maintain indices of the array elements. These indices are kept in a way such that the values they point to are always in descending order.
 An output list to store the maximum values for each sliding window.
 Process:
 2- First Window Preparation:
+
 
 Traverse through the first w elements of the array (where w is the window size).
 For each element:
@@ -12,6 +15,7 @@ Remove elements from the back of the deque if they are less than the current ele
 Add the current element's index to the deque.
 The largest element for the first window is at the front of the deque, and its value is stored in the output list.
 3- Sliding the Window:
+
 
 For the rest of the elements in the array:
 Move the window one position to the right each time.
