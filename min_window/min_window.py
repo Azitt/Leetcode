@@ -1,34 +1,28 @@
 def min_window(str1, str2):
-    
-   # Replace this placeholder return statement with your code
-    s1 = list(str1)
-    minwindow = ""
-    minwindow_len = float("inf")
-    k = 0
-    index_s2 = 0
-    i = 0
-    while i <len(s1):
-        print ("i",i)
-        if s1[i] == str2[index_s2]:
-            print("s1[i] ,str2[index_s2]",s1[i],str2[index_s2]) 
-            index_s2 += 1              
-        if index_s2==len(str2):
-           index_s2 -= 1          
-           print("index_s2",index_s2)
-           for j  in range(i,k-1,-1):
-              print("s1[j],str2[index_s2]",s1[j],str2[index_s2])
-              if  s1[j] == str2[index_s2]:
-                  index_s2 -=1    
-              if index_s2 == -1:
-                 print("j,i",j,i)
-                 if len(s1[j:i+1]) < minwindow_len:
-                  minwindow_len = len(s1[j:i+1])  
-                  minwindow =  s1[j:i+1]
-                  print("minwindow,minwindow_len",minwindow,minwindow_len)
-                 k += 1
-                 i = k       
-                 index_s2 = 0
-                 break
-        i +=1               
-                
-    return  ''.join(minwindow) 
+ s2len = len(str2)
+ index_str1 ,index_str2= 0, 0
+ min_sub_len = float("inf")
+ min_seq = ""
+ while index_str1 < len(str1):
+    if str1[index_str1] ==str2[index_str2]:
+        index_str2 += 1
+        if index_str2 == s2len:
+           start,end = index_str1,index_str1
+           index_str2 -= 1
+           while index_str2 >=0:
+               if str1[start] == str2[index_str2]:
+                    index_str2 -=1
+               start -= 1
+           start += 1
+           if (end - start) < min_sub_len:
+               min_sub_len = end - start
+               min_seq = str1[start:end+1]
+           index_str1 = start
+           index_str2 = 0
+    index_str1 += 1 
+ return min_seq 
+
+if __name__ == '__main__':
+ str1 = "abcdebdde"
+ str2 = "bde"
+ print(min_window(str1, str2))  
