@@ -6,6 +6,7 @@ Data Structures Used:
 A deque to maintain indices of the array elements. These indices are kept in a way such that the values they point to are always in descending order.
 An output list to store the maximum values for each sliding window.
 Process:
+
 2- First Window Preparation:
 
 
@@ -14,6 +15,7 @@ For each element:
 Remove elements from the back of the deque if they are less than the current element because they cannot be the maximum if a larger element exists more recently in the window.
 Add the current element's index to the deque.
 The largest element for the first window is at the front of the deque, and its value is stored in the output list.
+
 3- Sliding the Window:
 
 
@@ -29,8 +31,10 @@ Cleaning Up the Deque:
 From the back: Ensure the elements are in descending order by value, so more recent elements that are larger force the removal of older, smaller elements.
 From the front: Remove indices that are no longer within the window’s range as the window slides.
 
+
 Solution 1: Using Deque (Double-Ended Queue)
 Approach:
+
 
 Maintains a deque (current_window) that stores indices of array elements. The indices are stored in such a way that the deque always contains indices in decreasing order of the values in nums.
 Before adding a new index to the deque, it removes indices of all elements from the back of the deque which are less than or equal to the element at the current index (clean_up function). This ensures that the deque's front always has the index of the maximum element for the current sliding window.
