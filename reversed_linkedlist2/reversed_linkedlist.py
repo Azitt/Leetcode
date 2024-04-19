@@ -74,7 +74,7 @@ def reverse(head):
     return head            
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([1, 2, 3, 4, 5]) 
-print_list_with_forward_arrow(reverse(input_linked_list.head)) 
+# print_list_with_forward_arrow(reverse(input_linked_list.head)) 
       
 ####reverse in group##########################################################
 def reverse_linked_list(head,k):
@@ -113,28 +113,41 @@ def reverse_group(head,k):
     return dummy.next           
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([1, 2, 3, 4, 5]) 
-print_list_with_forward_arrow(reverse_group(input_linked_list.head,3)) 
+# print_list_with_forward_arrow(reverse_group(input_linked_list.head,3)) 
 
 ##reverse left right###########################################
-def reverse_left_right(head,left,right):
- 
-    dummy = LinkedListNode(0)
-    dummy.next = head
-    prev = dummy
-    k = right - left 
-    for _ in range(left - 1):
-      prev = prev.next
-     
-    current = prev.next
-    for _ in range(k):
-        next = current.next
-        current.next = next.next
-        next.next = prev.next
-        prev.next = next
+def reverse_even_length_groups(head):
+    prev = head  
+    l = 2
+
+    while prev.next:
+        node = prev
+        n = 0
+        for i in range(l):
+            if not node.next:
+                break
+            n += 1
+            node = node.next
+        if n % 2:  
+            prev = node
+        else:      
+            reverse = node.next
+            curr = prev.next
+            for j in range(n):
+                curr_next = curr.next
+                curr.next = reverse
+                reverse = curr
+                curr = curr_next
+            prev_next = prev.next
+            prev.next = node
+            prev = prev_next
+        l += 1
+
+    return head
 
            
     return dummy.next           
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([7, 4, 6, 1, 5,8]) 
-print_list_with_forward_arrow(reverse_left_right(input_linked_list.head,2,5)) 
+print_list_with_forward_arrow(reverse_even_length_groups(input_linked_list.head)) 
 
