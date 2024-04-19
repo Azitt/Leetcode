@@ -74,7 +74,7 @@ def reverse(head):
     return head            
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([1, 2, 3, 4, 5]) 
-# print_list_with_forward_arrow(reverse(input_linked_list.head)) 
+print_list_with_forward_arrow(reverse(input_linked_list.head)) 
       
 ####reverse in group##########################################################
 def reverse_linked_list(head,k):
@@ -113,9 +113,9 @@ def reverse_group(head,k):
     return dummy.next           
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([1, 2, 3, 4, 5]) 
-# print_list_with_forward_arrow(reverse_group(input_linked_list.head,3)) 
+print_list_with_forward_arrow(reverse_group(input_linked_list.head,3)) 
 
-##reverse left right###########################################
+##reverse even length###########################################
 def reverse_even_length_groups(head):
     prev = head  
     l = 2
@@ -143,10 +143,8 @@ def reverse_even_length_groups(head):
             prev = prev_next
         l += 1
 
-    return head
-
-           
-    return dummy.next           
+    return head 
+       
 input_linked_list = LinkedList()
 input_linked_list.create_linked_list([7, 4, 6, 1, 5,8]) 
 print_list_with_forward_arrow(reverse_even_length_groups(input_linked_list.head)) 
