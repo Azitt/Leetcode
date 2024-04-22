@@ -77,20 +77,66 @@ print(k_smallest_number(lists,k))
 
 
 ##Find K Pairs with Smallest Sums#############################
-k = 4
-L1 = [3,4,8,9]
-L2 = [1,2,5,6]
+
 from heapq import *
-max_heap = []
-count_k = 0
-for i in range(len(L1)):
+def k_smallest_pairs(list1, list2, k):
+ L1 =  list1
+ L2 =  list2 
+ max_heap = []
+ count_k = 0
+ for i in range(len(L1)):
     for j in range(len(L2)):
         if count_k < k:
             count_k +=1
             sum = L1[i] + L2[j]
-            heappush(max_heap,-(sum,[L1[i],L2[j]]))  
+            heappush(max_heap,(-sum,[L1[i],L2[j]]))  
         elif count_k >= k and (L1[i] + L2[j]) < -max_heap[0][0]:
             heappop(max_heap) 
             sum = L1[i] + L2[j]
-            heappush(max_heap,-(sum,[L1[i],L2[j]]))
-print(max_heap)                   
+            heappush(max_heap,(-sum,[L1[i],L2[j]]))
+ return([h[1] for h in max_heap]) 
+# modified one####################
+# we don't need to compare them all because there are sorted arrays and the smallest sum coming from the beginning elements
+import heapq
+def k_smallest_pairs(list1, list2, k):
+    if not list1 or not list2 or k <= 0:
+        return []
+
+    result = []
+    min_heap = []
+    
+    for i in range(min(k, len(list1))):  # Only need to start with the first k elements from list1
+        heapq.heappush(min_heap, (list1[i] + list2[0], i, 0))
+
+    # While the heap is not empty and we have not yet collected k pairs
+    while min_heap and len(result) < k:
+        current_sum, i, j = heapq.heappop(min_heap)
+        result.append([list1[i], list2[j]])
+        
+        # If there is a next element in list2, push the pair with the next element in list2
+        if j + 1 < len(list2):
+            heapq.heappush(min_heap, (list1[i] + list2[j + 1], i, j + 1))
+
+    return result                  
+
+###kth smallest element in a sorted Matrix#################
+## it's similar to comparing multiple sorted arrays together#############
+
+# min_heap_way
+from heapq import *
+def kth_smallest_element(matrix, k):
+ mat = matrix  
+ min_heap = []
+ k_count = 0
+ for index, m in enumerate(mat):
+    heappush(min_heap,(m[0],0,index)) 
+ while min_heap and k_count < k:
+    smallest, value_index,row_index = heappop(min_heap)
+    k_count += 1
+    if (value_index + 1) <len(mat[row_index]):  
+        heappush(min_heap,(mat[row_index][value_index + 1],value_index + 1,row_index)) 
+ return smallest       
+
+mat = [[2,6,8],[3,7,10],[5,8,11]]
+k = 3
+kth_smallest_element(mat, k)
