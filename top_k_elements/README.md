@@ -6,3 +6,7 @@ Given an infinite stream of integers (sorted or unsorted), nums, design a class 
 
 # Reorganize String
 ![alt text](image-3.png)
+
+# K frequent words
+![alt text](image-4.png)
+
