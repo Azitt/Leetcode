@@ -98,31 +98,77 @@ while low <= high:
         high = mid - 1  
     out.append(nums[mid])        
 print(out)
-def findClosestElements(arr,k,x):
-		# initially, consider if the starting point can exist in any of the first (length of array - k) elements
-		l = 0
-		r = len(arr) - k
+def find_closest_elements(arr,k,x):
+    # initially, consider if the starting point can exist in any of the first (length of array - k) elements
+    l = 0
+    r = len(arr) - k
 
-		# we use binary search to find the start point in the array
-		# we check if the mid point difference at any mid is greater than mid + k, if it is then we dont have to consider elements before mid as the starting point and move our l closer to r
-		# else if it is less than the mid + k elements than we bring our r closer to l
+    # we use binary search to find the start point in the array
+    # we check if the mid point difference at any mid is greater than mid + k, if it is then we dont have to consider elements before mid as the starting point and move our l closer to r
+    # else if it is less than the mid + k elements than we bring our r closer to l
 
-		while l < r:
-			mid = l + (r - l) // 2
+    while l < r:
+        mid = l + (r - l) // 2
 
-			if x - arr[mid] > arr[mid + k] - x:
-				l = mid + 1
-			else:
-				r = mid
+        if x - arr[mid] > arr[mid + k] - x:
+            l = mid + 1
+        else:
+            r = mid
+    print(l)
+    # finally we have our starting point, then just iterate k times from l and add the answer
 
-		# finally we have our starting point, then just iterate k times from l and add the answer
+    ans = []
+    for i in range(k):
+        ans.append(arr[l + i])
 
-		ans = []
-		for i in range(k):
-			ans.append(arr[l + i])
-
-		return ans
+    return ans
 nums = [1,2,3,4,5] 
 k = 4
 target = 3
-print(findClosestElements(nums,k,target))          
+print(find_closest_elements(nums,k,target)) 
+### single element in a sorted array################
+def single_non_duplicate(nums):
+  array = nums
+  l = 0
+  r = len(array) - 1
+  while l < r:
+    mid = l + (r - l)//2
+    if mid%2 == 1:
+      mid -=1
+    if array[mid]==array[mid+1]:
+        l = mid + 2
+    else:
+        r = mid    
+  return (array[l])
+
+array = [1,1,2,2,3,3,4]
+single_non_duplicate(array) 
+
+## Search in Rotated Sorted Array II##################
+def search(nums, target):            
+     l,r = 0, len(nums) - 1
+     while l <= r:
+         mid = l + (r - l)//2
+         if nums[mid] == target:
+             return True
+         
+         if nums[l] < nums[mid]: ## check if the first half is sorted
+             
+             if nums[l]<= target < nums[mid]:
+                 r = mid -1
+             else: 
+                 l = mid + 1
+         elif nums[mid] < nums[r]:  ## els if the second half is sorted
+             if nums[mid]< target<= nums[r]:
+                 l = mid+1
+             else:
+                 r = mid -1
+         else:  # if there is no sorted half, just increment left pointer or right pointer
+             if nums[l] == nums[mid]:
+                l += 1
+             if nums[r] == nums[mid]:
+                r -= 1
+     return False                            
+nums = [1,3,1,1,1]
+target = 3  
+print(search(nums, target))                         
