@@ -12,3 +12,7 @@
 # letter combinations of a phone number
 ![alt text](image-5.png)
 
+# Generate parentheses
+![alt text](image-6.png)
+
+

@@ -99,3 +99,27 @@ def Generate_Parentheses(n):
     return out_list   
 
 print(Generate_Parentheses(3))
+
+## Find K-Sum Subsets########################################
+def get_bit(num,bit):
+    temp = 1<<bit
+    temp = temp&num
+    if temp == 0:
+        return 0
+    return 1
+def get_k_sum_subsets(nums,k):
+    subset_count = 2**len(nums)
+    subsets = []
+    for i in range(subset_count):
+        subset = []
+        for j in range(len(nums)):
+            if get_bit(i,j) == 1 and nums[j] not in subset:
+                subset.append(nums[j])
+        if sum(subset) == k:
+            subsets.append(subset)        
+    return subsets
+# nums=[1,3,5,21,19,7,2]
+# k = 10
+
+nums, k= [8,13,3,22,17,39,87,45,36] , 3
+print(get_k_sum_subsets(nums,k))
