@@ -58,5 +58,44 @@ costs = [[20,10],[20,10],[20,10],[20,10]]
 print(two_city_scheduling(costs))  
 
 ## Minimum Number of Refueling Stops#######################
-      
+from heapq import *
+def  min_refuel_stops(target,starting_fuel,stations): 
+ 
+ if starting_fuel>= target:
+     return 0
+ max_heap = []
+ max_dist = starting_fuel
+ n = len(stations)
+ i = 0
+ stops = 0
+ while max_dist < target:
+    if i < n and stations[i][0] <= max_dist:     
+        heappush(max_heap,-stations[i][1])
+        i += 1
+    elif not max_heap:
+         return -1
+    else:
+       max_fuel = heappop(max_heap)
+       max_dist += -max_fuel
+       stops += 1    
+ return stops
+
+target = 120
+starting_fuel = 10
+stations= [[10,60],[20,25],[30,30],[60,40]] 
+print( min_refuel_stops(target,starting_fuel,stations))    
+
+## jump game 2##########################
+def jump_game_2(nums):
+ farthest_jump = 0
+ current_jump = 0
+ jump = 0
+ for i in range(len(nums)-1):
+    farthest_jump = max(farthest_jump, i + nums[i]) 
+    if i == current_jump:
+        current_jump = farthest_jump
+        jump += 1 
+ return jump
+nums = [2,3,1,1,4]      
+print(jump_game_2(nums))      
            
