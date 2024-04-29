@@ -32,4 +32,32 @@ def solve_n_queens(n):
 
 n = 4
 print(solve_n_queens(n))
-        
+
+## word search#########################
+def dfs(row,col,word,index,grid):
+   if len(word) == index:
+        return True 
+   if row < 0 or row >= len(grid) or col <0 or col >= len(grid[0]) or grid[row][col] != word[index]:
+       return False 
+   tmp = grid[row][col]
+   grid[row][col] = '*' 
+   for r_offset, c_offset in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+       if dfs(row+r_offset,col+c_offset,word,index+1,grid):
+           return True
+       
+   grid[row][col] = tmp
+   return False
+   
+def word_search(grid,word):
+    row = len(grid)
+    col = len(grid[0])
+    for r in range(row):
+        for c in range(col):
+           if dfs(r,c,word,0,grid):
+               return True
+    return False       
+                    
+
+grid = [["N","W","L","I","M"],["V","I","L","Q","O"],["O","L","A","T","O"],["R","T","A","I","N"],["O","I","T","N","C"]] 
+word = "LATIN" 
+print(word_search(grid,word))          
