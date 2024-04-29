@@ -10,3 +10,5 @@ There are two conditions that cause us to backtrack, but for two different purpo
 2- Once we find a valid solution, we still have to identify all the other valid solutions. So, we backtrack by removing the last queen placed on the board and resuming our search for solutions from that point. In order to be sure to find all possible solutions, we’ll need to backtrack, row by row, all the way back to the first queen placed on the board, changing its position and then looking for alternative solutions.
 
 # Word Search
+
+![alt text](image-1.png)
