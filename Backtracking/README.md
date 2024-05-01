@@ -24,3 +24,11 @@ Each house has only one parent house. The thief knows that if he robs two houses
 
 ![alt text](image-4.png)
 
+# Sudoku Solver
+![alt text](image-5.png)
+![alt text](image-6.png)
+
+# Matchsticks to Square
+![alt text](image-7.png)
+
+

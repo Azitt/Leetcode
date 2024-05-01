@@ -184,8 +184,33 @@ def solve_sudoku(board):
     return board    
 
 board = [[".",".",".",".",".",".",".","7","."],["2","7","5",".",".",".","3","1","4"],[".",".",".",".","2","7",".","5","."],["9","8",".",".",".",".",".","3","1"],[".","3","1","8",".","4",".",".","."],[".",".",".","1",".",".","8",".","5"],["7",".","6","2",".",".","1","8","."],[".","9",".","7",".",".",".",".","."],["4","1",".",".",".","5",".",".","7"]]            
-print(solve_sudoku(board))  
-    
+print(solve_sudoku(board)) 
 
+## Matchsticks########################################################
+def matchstick_rec(four_side_length,match_sort,target_slength,index_matches,index_slength):
+    if index_matches==(len(match_sort)):
+        return all(side==target_slength for side in four_side_length)
+    for i in range(4):
+     if (four_side_length[i] + match_sort[index_matches])<= target_slength:
+         four_side_length[i] += match_sort[index_matches]
+         if matchstick_rec(four_side_length,match_sort,target_slength,index_matches+1,i):
+             return True
+         four_side_length[i] -= match_sort[index_matches]
+    return False   
+                  
+         
+def matchstick_to_square(matchsticks):
+ if len(matchsticks) < 4 or sum(matchsticks)%4 !=0:
+     return False
+ match_sort = sorted(matchsticks)
+ target_slength = sum(matchsticks)//4
+ for s in match_sort:
+     if s > target_slength:
+         return False
+ four_side_length = [0,0,0,0]
+ return matchstick_rec(four_side_length,match_sort,target_slength,0,0)       
+    
+matchsticks = [1,1,2,2,2]
+print(matchstick_to_square(matchsticks))
 
                
