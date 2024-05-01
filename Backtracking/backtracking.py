@@ -133,7 +133,7 @@ print(restore_ip_addresses(s))
 s= "25525511135"
 print(restore_ip_addresses(s))
 
-##Flood Fill#################################
+##Flood Fill#######################################################################
 
 def flood_fill_rec(grid, sr, sc, target,value):
     
@@ -153,8 +153,38 @@ def flood_fill(grid, sr, sc, target):
 
 grid = [[1,1,0,1,0],[0,0,0,0,1],[0,0,0,1,1],[1,1,1,1,0],[1,0,0,0,0]]
 sr,sc,target = 4,3,3 
-print(flood_fill(grid, sr, sc, target))   
-   
+print(flood_fill(grid, sr, sc, target))
+
+## Sudoku Solver#####################################################
+def is_valid(row,col,board,digit):
+    for i in range(9):
+        if board[row][i]==digit or board[i][col]==digit:
+          return False
+    startrow = row - row%3
+    startcol = col - col%3
+    for i in range(3):
+        for j in range(3):
+            if board[i+startrow][j+startcol] == digit:
+                return False
+    return True        
+def solve_sudoku(board):
+    row = len(board)
+    column = len(board[0])
+    
+    for i in range(row):
+        for j in range(column):
+            if board[i][j] == ".":
+             for digit in "123456789":
+                if is_valid(i,j,board,digit):
+                    board[i][j] = digit 
+                    if solve_sudoku(board):
+                        return board
+                    board[i][j] = "."
+             return None
+    return board    
+
+board = [[".",".",".",".",".",".",".","7","."],["2","7","5",".",".",".","3","1","4"],[".",".",".",".","2","7",".","5","."],["9","8",".",".",".",".",".","3","1"],[".","3","1","8",".","4",".",".","."],[".",".",".","1",".",".","8",".","5"],["7",".","6","2",".",".","1","8","."],[".","9",".","7",".",".",".",".","."],["4","1",".",".",".","5",".",".","7"]]            
+print(solve_sudoku(board))  
     
 
 
