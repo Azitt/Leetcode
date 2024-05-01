@@ -134,13 +134,26 @@ s= "25525511135"
 print(restore_ip_addresses(s))
 
 ##Flood Fill#################################
-grid = [[1,1,0,1,0],[0,0,0,0,1],[0,0,0,1,1],[1,1,1,1,0],[1,0,0,0,0]]
-sr,sc,target = 4,3,3
+
+def flood_fill_rec(grid, sr, sc, target,value):
+    
+    if sr < 0 or sr>len(grid) or sc < 0 or sr > len(grid[0]) or grid[sr][sc] !=value:
+        return 
+    grid[sr][sc] = target
+    for roffset,coloffset in [(0,1),(1,0),(0,-1),(-1,0)]:
+        flood_fill_rec(grid, sr + roffset, sc + coloffset, target,value)
+        
 def flood_fill(grid, sr, sc, target):
-    for i in range(len(grid)):
-        for j in range(len(grid[0])):
-            for r_offset in [(0,1),(1,0),(0,-1),(-1,0)]:
-                grid[sr,sc] == grid[sr+r_offset]
+    
+    if grid[sr][sc]==target:
+        return grid
+    value = grid[sr][sc]
+    flood_fill_rec(grid, sr, sc, target,value)
+
+grid = [[1,1,0,1,0],[0,0,0,0,1],[0,0,0,1,1],[1,1,1,1,0],[1,0,0,0,0]]
+sr,sc,target = 4,3,3 
+flood_fill(grid, sr, sc, target)   
+   
     
 
 
