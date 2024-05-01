@@ -12,3 +12,11 @@ There are two conditions that cause us to backtrack, but for two different purpo
 # Word Search
 
 ![alt text](image-1.png)
+
+#  House Robber 3
+Each house has only one parent house. The thief knows that if he robs two houses that are directly connected, the police will be notified. The thief wants to know the maximum amount of money he can steal from the houses without getting caught by the police.
+![alt text](image-2.png)
+
+# Restore IP Addresses
+![alt text](image-3.png)
+
