@@ -23,6 +23,44 @@ better approach
 ![alt text](image-10.png)
 ![alt text](image-11.png)
 
+# bit counts######################
+![alt text](image-12.png)
+
+# 01 Matrix##########################
+![alt text](image-13.png)
+
+start from top-left and just check the cell above and on the left:
+![alt text](image-14.png)
+then start from bottom-right and check the right and bottom cell only:
+![alt text](image-15.png)
+compare the distance with the distance from first step and pick the minimum. 
+
+# House Robber II ##############################
+A professional robber plans to rob some houses along a street. These houses are arranged in a circle, which means that the first and the last house are neighbors. The robber cannot rob adjacent houses because they have security alarms installed.
+
+Following the constraints mentioned above and given an integer array money representing the amount of money in each house, return the maximum amount the robber can steal without alerting the police.
+
+![alt text](image-16.png)
+ 
+ bottom-up solution:
+ ![alt text](image-17.png)
+ ![alt text](image-18.png)
+ ![alt text](image-19.png)
+ For two or more houses, we can either pick the sum of the current house i and maximum value till house i-2 (current+i-1 are not adjacent), which is stored in the lookup array, or the maximum value till house i-1 (one house before the current house which exclude the current house), which is also stored in the lookup array. We will pick the greater value from the two . basically we decide for every house to include it or exclude it.
+ ![alt text](image-20.png)
+ ![alt text](image-21.png)
+
+ # Maximum Product Subarray #######################
+ Given an integer array, nums, find a subarray that has the largest product, and return the product.
+ ![alt text](image-22.png)
+
+ we keep minimum here due to Multiplying a negative number by another negative number results in a positive product. Therefore, if min_so_far is negative and we encounter another negative number, the resulting product could become a new maximum.
+
+
+
+
+
+
 
 
 

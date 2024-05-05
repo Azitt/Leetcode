@@ -158,3 +158,78 @@ def can_partition_array(nums):
                                       ][j - 1] or dp[i][j - 1]
               
     return dp[subset_sum][len(nums)]
+
+###Counting Bits###########################################################
+def bits_count(n):
+    array = [0]*(n+1)
+    if n ==0:
+        return array
+    array[0] = 0
+    array[1] = 1
+    for i in range(n+1):
+        if i%2==0:
+            array[i] = array[i//2]
+        else:
+            array[i] = array[i//2] + 1    
+    return array
+## 01 MAtrix########################################
+import math
+def update_math(mat):
+    m,n = len(mat), len(mat[0])
+    
+    for r in range(m):
+        for c in range(n):
+            if mat[r][c] > 0:
+                above = mat[r-1][c] if r> 0 else math.inf
+                left = mat[r][c-1]  if c > 0 else math.inf
+                mat[r][c] = min(above,left) + 1
+    for r in range(m-1,-1,-1):
+        for c in range(n-1,-1,-1):
+            if mat[r][c] >0:
+             bottom = mat[r+1][c] if r > m-1 else math.inf
+             right = mat[r][c+1]  if c > n-1 else math.inf
+             mat[r][c] = min(mat[r][c],bottom+1,right+1) 
+    return mat
+
+mat = [[0, 0, 1], [0, 1, 1], [1, 0, 1]]
+print(update_math(mat))  
+
+## House Robber II ####################################
+
+def house_robbery_helper(money):
+    lookup = [0]*(len(money)+1)
+    lookup[1] = money[0]
+    for i in range(2,len(money)+1):   
+        lookup[i] = max(lookup[i-2]+money[i-1],lookup[i-1])
+    return lookup[-1]    
+
+def house_robbery(money): 
+    set1 =money[:-1]
+    set2 = money[1:]
+    print(set1,set2)
+    return max(house_robbery_helper(money[:-1]),house_robbery_helper(money[1:]))
+                         
+
+money = [7,4,1,9,3]
+print(house_robbery(money))
+
+## Maximum Product Subarray################################
+def max_product(nums):
+    if len(nums) == 0:
+        return 0
+    min_product, max_product = nums[0], nums[0]
+    product = max_product
+    for i in range(1,len(nums)):
+        
+        prev_max_product = max_product
+        max_product = max(min_product*nums[i],max_product*nums[i],nums[i])
+        min_product = min(min_product*nums[i],prev_max_product*nums[i],nums[i])
+        
+        
+        product = max(product,max_product)
+    return product 
+
+print(max_product([2,3,-2,4]))   
+             
+             
+                      
