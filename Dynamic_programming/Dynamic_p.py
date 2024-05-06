@@ -231,6 +231,81 @@ def max_product(nums):
 
 print(max_product([2,3,-2,4]))   
              
-## Combination Sum####################################
-             
-                      
+## Combination Sum#########################################
+def combination_sum(nums,target):
+    # dp = [[0]]*(target+1) 
+    dp = [[] for _ in range(target + 1)]
+    dp[0].append([]) 
+
+    for i in range(1,target+1):
+      for j in range(len(nums)):
+        if nums[j]<=i:
+            
+            for prev in dp[i-nums[j]]:
+                temp = prev + [nums[j]] 
+                temp.sort()
+                if temp not in dp[i]:
+                  dp[i].append(temp)  
+    return dp[target]  
+nums = [2,3,4]
+target = 6
+print(combination_sum(nums,target)) 
+
+# word break#################################################
+def word_break(s,word_dict):
+    n= len(s)
+    dp =[False]*(n+1)  
+    word_set = set(word_dict)
+    dp[0] = True
+    for i in range(1,n+1):
+      for j in range(i):
+          if dp[j] and s[j:i] in word_set:
+              dp[i] = True
+              break
+    return dp[n]      
+s = "vegand"
+word_dict = ["an","and","veg","vegans"]
+print(word_break(s,word_dict))
+
+# Palindromic Substrings######################################
+def count_palindromic_substrings(s):    
+    n = len(s)
+    dp = [[False for i in range(n)] for i in range(n)]
+    count = 0
+    for i in range(n):
+        dp[i][i] = True
+        count += 1
+    for i in range(n-1):
+        dp[i][i+1] = (s[i]==s[i+1])
+        count += dp[i][i+1] 
+    for length in range(3,n+1):
+        i = 0
+        for j in range(length-1,n):
+            dp[i][j] = dp[i+1][j-1] and (s[i]==s[j])
+            count += dp[i][j]
+            i += 1
+    return count 
+s = "peeweep"
+print(count_palindromic_substrings(s)) 
+
+###  Longest Common Subsequence ####################
+def longest_common_subsequence_rec(i,j,dp,str1, str2):
+    if i== len(str1) or j==len(str2):
+        return 0
+    elif dp[i][j] == -1:
+      if str1[i]==str2[j]:
+        dp[i][j] = 1+ longest_common_subsequence_rec(i+1,j+1,dp,str1, str2)
+      else:
+          dp[i][j] = max(longest_common_subsequence_rec(i+1,j,dp,str1, str2), longest_common_subsequence_rec(i,j+1,dp,str1, str2))
+    return dp[i][j]     
+ 
+def longest_common_subsequence(str1, str2):  
+    n= len(str1)
+    m = len(str2)
+    dp = [[-1 for i in range(m)] for j in range(n)]
+    return longest_common_subsequence_rec(0,0,dp,str1, str2) 
+
+str1 = "bed"
+str2 = "read" 
+print(longest_common_subsequence(str1, str2))       
+                                               

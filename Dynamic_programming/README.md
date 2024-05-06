@@ -59,6 +59,24 @@ Following the constraints mentioned above and given an integer array money repre
 # Combination Sum ##################################
 ![alt text](image-23.png)
 
+# word break ########################################
+![alt text](image-24.png)
+
+# Palindromic Substrings ############################
+![alt text](image-26.png)
+
+![alt text](image-25.png)
+
+# Longest Common Subsequence ##########################
+Suppose you are given two strings. You need to find the length of the longest common subsequence between these two strings.
+
+A subsequence is a string formed by removing some characters from the original string while maintaining the relative position of the remaining characters. For example, “abd” is a subsequence of “abcd”, where the removed character is “c”.
+![alt text](image-28.png)
+
+![alt text](image-27.png)
+![alt text](image-29.png)
+
+
 
 
 
