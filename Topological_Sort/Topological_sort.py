@@ -91,4 +91,111 @@ def verify_alien_dictionary(words, order):
 
 words = ["passengers","to","the","unknown"]
 order =  "ptuabcdefghijklmnoqrsvwxyz" 
-print(verify_alien_dictionary(words, order))     
+print(verify_alien_dictionary(words, order))  
+
+## Course Schedule II##################################################
+def course_schedule2(n,prerequisites):
+    graph = {}
+    indegree = {}
+    result = []
+    if n <= 0:
+        return []
+    
+    for p in prerequisites:
+        parent,child = p[1],p[0]
+        graph[parent],graph[child] = [], []
+        indegree[parent],indegree[child] = 0,0
+
+    for p in prerequisites:
+        parent, child = p[1], p[0]
+        graph[parent].append(child)
+        indegree[child] += 1
+    source = deque()
+    for child in indegree:
+        if indegree[child] == 0:
+            source.append(child) 
+    while source:
+        vertex =source.popleft()
+        result.append(vertex)
+        for child in graph[vertex]:
+            indegree[child] -= 1
+            if indegree[child] ==0:
+                source.append(child)
+    if len(result) != n:
+        return []             
+    return result                          
+
+n = 5
+prerequisites =[[1,0],[2,0],[3,1],[4,3]] 
+print(course_schedule2(n,prerequisites)) 
+
+## Course Schedule ################################################  
+def course_schedule(n,prerequisites):
+    graph = {}
+    indegree = {}
+    counter = 0
+    if n <= 0:
+        return []
+    
+    for p in prerequisites:
+        parent,child = p[1],p[0]
+        graph[parent],graph[child] = [], []
+        indegree[parent],indegree[child] = 0,0
+
+    for p in prerequisites:
+        parent, child = p[1], p[0]
+        graph[parent].append(child)
+        indegree[child] += 1
+    source = deque()
+    for child in indegree:
+        if indegree[child] == 0:
+            source.append(child) 
+    while source:
+        vertex =source.popleft()
+        counter +=1
+        for child in graph[vertex]:
+            indegree[child] -= 1
+            if indegree[child] ==0:
+                source.append(child)
+                 
+    return counter == n                          
+ 
+n = 3
+prerequisites =[[1,0],[2,1],[1,2]] 
+print(course_schedule(n,prerequisites)) 
+
+## Find All Possible Recipes #############################
+# def recipes2(recipes,ingredients,supplies):
+#     result =[]
+#     for i,ing in enumerate(ingredients):
+#         valid = True
+#         for g in ing:
+#             if g not in supplies:
+#                 valid = False
+#                 break 
+#         if valid:
+#             result.append(recipes[i]) 
+#     return result
+# recipes = ["tea", "omelette"]
+# ingredients =  [["milk", "caffeine", "sugar"], ["salt", "egg", "pepper"]] 
+# supplies = ["salt", "milk", "egg", "caffeine", "sugar"]
+# print(recipes2(recipes,ingredients,supplies))
+################
+def recipes2(recipes,ingredients,supplies):
+    result =[]
+    valid = True
+    available_supply = set (supplies)
+    while valid:
+     valid = False
+     for i,recipe in enumerate(recipes):
+        if recipe in available_supply:
+             continue
+        if all(ing in supplies for ing in ingredients[i]):
+            available_supply.add(recipe)
+            result.append(recipe)
+            valid = True 
+    return result
+recipes = ["tea", "omelette"]
+ingredients =  [["milk", "caffeine", "sugar"], ["salt", "egg", "pepper"]] 
+supplies = ["salt", "milk", "egg", "caffeine", "sugar"]
+print(recipes2(recipes,ingredients,supplies))           

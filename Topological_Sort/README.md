@@ -17,3 +17,7 @@ in-degrees= count of incoming edges of a vertex
 ![alt text](image-6.png)
 ![alt text](image-7.png)
 
+# Course schedule ######################################
+![alt text](image-9.png)
+![alt text](image-8.png)
+
