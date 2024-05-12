@@ -1,4 +1,4 @@
-## Set Matrix Zeros##########
+## Set Matrix Zeros ##########
 Given a matrix, mat, if any element within the matrix is zero, set that row and column to zero.
 ![alt text](image.png)
 
