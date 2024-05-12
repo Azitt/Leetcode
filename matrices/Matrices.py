@@ -1,4 +1,4 @@
-## Set Matrix Zeros #####################
+## Set Matrix Zeros #########################
 def matrices(mat):
     n = len(mat)
     m = len(mat[0])
@@ -50,3 +50,26 @@ def rotate_image(matrix):
 
 mat= [[1,2,3],[4,5,6],[7,0,9]]    
 print(rotate_image(mat))
+
+## Spiral Matrix#############################################
+def Spiral_Matrix(mat):
+    direction = 1
+    result = []
+    row,col = 0,-1
+    n = len(mat)
+    m = len(mat[0])
+    while m > 0 and n> 0:
+     for _ in range(m):
+        col += direction
+        result.append(mat[row][col])
+     n -=1    
+     for _ in range(n):
+        row += direction
+        result.append(mat[row][col]) 
+     m -= 1    
+     direction *= -1
+    
+    return result 
+mat = [[3,1,1],[15,12,13],[4,14,12],[10,5,11]]
+print(Spiral_Matrix(mat)) 
+          

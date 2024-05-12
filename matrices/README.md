@@ -7,3 +7,6 @@ Given an 𝑛×𝑛 matrix, rotate the matrix 90 degrees clockwise. The performe
 
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+
+## Spiral Matrix #######################
+![alt text](image-3.png)
