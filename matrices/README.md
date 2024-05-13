@@ -10,3 +10,7 @@ Given an 𝑛×𝑛 matrix, rotate the matrix 90 degrees clockwise. The performe
 
 ## Spiral Matrix #######################
 ![alt text](image-3.png)
+
+## Where Will the Ball Fall ##############
+![alt text](image-4.png)
+

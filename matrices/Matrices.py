@@ -72,4 +72,22 @@ def Spiral_Matrix(mat):
     return result 
 mat = [[3,1,1],[15,12,13],[4,14,12],[10,5,11]]
 print(Spiral_Matrix(mat)) 
+
+## Where Will the Ball Fall ################
+def find_exit_column(grid):
+    result = [-1]*len(grid[0])
+    
+    for col in range(len(grid[0])):
+        current_col = col
+        for row in range(len(grid)):
+            next_col = current_col + grid[row][current_col]
+            
+            if next_col < 0 or next_col > len(grid[0]) - 1 or grid[row][current_col] != grid[row][next_col]:
+                break
+            if row== len(grid) - 1:
+                result[col]=next_col
+            next_col = current_col
+    return result 
+grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]] 
+print(find_exit_column(grid))          
           
