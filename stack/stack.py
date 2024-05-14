@@ -85,4 +85,25 @@ def exclusive_time(n, logs):
 n = 3
 logs = ["0:start:0","0:end:0","1:start:1","1:end:1","2:start:2","2:end:2","2:start:3","2:end:3"]
 print(exclusive_time(n, logs))
- 
+
+## Flatten Nested List Iterator #####################
+from nested_integers import NestedIntegers
+class NestedIterator:
+    def __init__(self,nested_list):
+        self.nested_list_stack = list(reversed([NestedIntegers(val) for val in nested_list]))
+    def has_next(self):
+        while len(self.nested_list_stack) > 0:
+            top = self.nested_list_stack[-1]
+            if top.is_integer():
+                return True
+            top_list = self.nested_list_stack.pop().get_list() 
+            i = len(top_list) -1
+            while i>= 0:
+                self.nested_list_stack.append(top_list[i])
+                i -= 1
+        return False
+    def next(self):
+        if self.has_next():
+            return self.nested_list_stack.pop().get_integer()
+        return None          
+[1,2,[3,[4,5,6],[7,8],9],10] 

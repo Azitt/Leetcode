@@ -3,3 +3,6 @@ Given a string containing an arithmetic expression, implement a basic calculator
 
 ## Exclusive Execution Time of Functions ########################
 ![alt text](image.png)
+
+## Flatten Nested List Iterator ############################
+You’re given a nested list of integers. Each element is either an integer or a list whose elements may also be integers or other integer lists. Your task is to implement an iterator to flatten the nested list.
