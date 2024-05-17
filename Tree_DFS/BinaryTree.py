@@ -1,5 +1,6 @@
 from typing import List
 from queue import Queue
+from collections import *
 
 class TreeNode:
     def __init__(self, data):
@@ -46,3 +47,16 @@ class BinaryTree:
 
         # Return the root of the binary tree
         return root
+     # function to find a node given the value stored in the node
+    def find(self, value):
+        q = deque([self.root])
+        while q:
+            currentNode = q.popleft()
+            if currentNode:
+                if currentNode.data == value:
+                    return currentNode
+                q.append(currentNode.left)
+                q.append(currentNode.right)
+            if all(val == None for val in q):
+                break
+        return None
