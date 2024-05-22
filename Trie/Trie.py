@@ -118,6 +118,81 @@ for d in dictionary:
  trie.insert(d)
 print(trie.replace(sentence)) 
 
+## Design Add and Search Words Data Structure ###################
+class TrieNode4():
+  def __init__(self):
+    # Empty list of child nodes
+    self.children = []
+    # False indicates this node is not the end of a word
+    self.end_of_word = False
+    # Create 26 child nodes for each letter of alphabet
+    for i in range(0, 26):
+      self.children.append(None)
+      
+class Trie4:
+    def __init__(self):
+        self.root = TrieNode4()
+        self.can_find = False
+        
+    def add_word(self,word):
+        node = self.root
+        for c in word:
+            index = ord(c) - ord('a')
+            if node.children[index] is None:
+                node.children[index] = TrieNode4() 
+            node = node.children[index]
+        node.end_of_word = True
+          
+    def search_word(self,word):
+        node = self.root
+        self.can_find = False
+        self.search_helper(node,word,0)
+        return self.can_find
+    def search_helper(self,node,word,i):
+        if not node:
+            return 
+        if self.can_find:
+            return   
+        if len(word) == i:
+            if node.end_of_word:
+                self.can_find = True
+            return    
+        if word[i] == ".":
+            for j in range(ord('a'),ord('z')+1):
+                self.search_helper(node.children[j - ord('a')],word,i+1)
+        else:        
+         index = ord(word[i]) - ord('a')
+         self.search_helper(node.children[index],word,i+1)
+     
+    def get_words(self):
+        word_list = []
+        if not self.root:
+            return []
+        return self.dfs(self.root,"",word_list)
+    
+    def dfs(self,node,word,word_list):
+        if not node:
+            return word_list
+        if node.end_of_word:
+            word_list.append(word)
+        for j in range(ord('a'),ord('z') + 1): 
+          prefix = word + chr(j)
+          word_list = self.dfs(node.children[j - ord('a')],prefix,word_list)
+        return word_list  
+
+trie = Trie4() 
+words = ["add", "sky", "hello", "multi", "addition", "sky", "multiply", "table"]
+for w in words:
+    trie.add_word(w)        
+wordSearch = ["helo", "multiple", "...le", "..llo", "..r"]
+
+for w in wordSearch:
+    print(trie.search_word(w))
+
+print(trie.get_words())                
+           
+             
+              
 
             
               
