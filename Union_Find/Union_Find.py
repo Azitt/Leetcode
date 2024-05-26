@@ -42,14 +42,33 @@ from union_findclass_stone import *
 
 
 def remove_stones(stones):
-    offset = 100000
+    offset = 100
     stone = UnionFind()
 
     for x, y in stones:
         stone.union(x, (y + offset))  
-    
+    print(stone.parents)
     groups = set()
     for i in stone.parents:
-        groups.add(stone.find(i))
-
+        a = stone.find(i)
+        print(a)
+        groups.add(a)
+    print(groups)
     return len(stones) - len(groups)   
+
+stones = [[0, 1], [0, 3], [1, 2], [2, 3]]
+print(remove_stones(stones))
+
+## Longest Consecutive Sequence ################
+from union_findclass_Longestc import UnionFind
+
+def longest_consecutive_sequence(nums):
+    union_find = UnionFind(nums) 
+    for num in nums:
+        if  num + 1 in union_find.parent:
+            union_find.union(num,num+1)  
+    return union_find.max_length
+
+nums = [99,2,1,3,5]
+print(longest_consecutive_sequence(nums))         
+    
