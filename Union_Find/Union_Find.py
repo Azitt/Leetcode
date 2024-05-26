@@ -34,11 +34,22 @@ grid = [["1","1","1"],["0","1","0"],["1","0","0"],["1","0","1"]]
 print(num_islands(grid))  
 
 ## Most Stones Removed with Same Row or Column ################
-## Maximum stones that can be removed=total stones−number of groups ###########
+## Maximum stones that can be removed=total stones−number of groups ###########cd ..
+
 import collections
 from collections import defaultdict
 from union_findclass_stone import *
 
 
 def remove_stones(stones):
-     parents,ranks = {},{}    
+    offset = 100000
+    stone = UnionFind()
+
+    for x, y in stones:
+        stone.union(x, (y + offset))  
+    
+    groups = set()
+    for i in stone.parents:
+        groups.add(stone.find(i))
+
+    return len(stones) - len(groups)   
