@@ -62,8 +62,11 @@ Given the grid represented as a string array, return the number of adjacent regi
 solution:
 
 1- The idea is to divide each 1×1 box in the grid into four regions representing its north, west, east, and south regions.
+
 2- At the start, an n×n grid will contain (4×n×n) regions.
-3- We will gradually reduce the number of regions by merging the regions inside each box based on the character they contain and 
+
+3- We will gradually reduce the number of regions by merging the regions inside each box based on the character they contain and
+
 ![alt text](image-13.png)
 ![alt text](image-14.png)
 ![alt text](image-15.png)
@@ -77,7 +80,7 @@ solution:
 
     The east region of the current box connects with the west region of the box to its right.
 
-4- This merging and connecting will be done using the union find algorithm.
+5- This merging and connecting will be done using the union find algorithm.
 
 ![alt text](image-16.png)
 
