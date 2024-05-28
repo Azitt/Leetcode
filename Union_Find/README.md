@@ -42,5 +42,50 @@ Removable stones = 5 - 3 = 2
 ## Longest Consecutive Sequence #################
 Given an unsorted array, nums, your task is to return the length of the longest consecutive sequence of elements. The consecutive sequence of elements is such that there are no missing elements in the sequence. The consecutive elements can be present anywhere in the input array.
 
+## Last Day Where You Can Still Cross ###############
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
+In our solution, we’ll look for a single component of connected water cells from the left to the right of matrix, on each day. Once encountered, we’ll return this day as the last day where we can still cross matrix.
+![alt text](image-8.png)
+ when checking whether two water cells are connected, we need to check in eight directions: up, down, left, right, up-left, up-right, down-left, and down-right.
+
+## Regions Cut by Slashes ##########################
+An n×n grid is composed of 𝑛, 1×1 squares, where each 1×1 square consists of a “/”, “\”, or a blank space. These characters divide the square into adjacent regions.
+
+Given the grid represented as a string array, return the number of adjacent regions.
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+solution:
+
+1- The idea is to divide each 1×1 box in the grid into four regions representing its north, west, east, and south regions.
+2- At the start, an n×n grid will contain (4×n×n) regions.
+3- We will gradually reduce the number of regions by merging the regions inside each box based on the character they contain and 
+![alt text](image-13.png)
+![alt text](image-14.png)
+![alt text](image-15.png)
+
+4- then connecting them with their neighboring boxes (on it’s top, bottom, left, and right). 
+    The north region of the current box connects with the south region of the box above it.
+
+    The south region of the current box connects with the north region of the box below it.
+
+    The west region of the current box connects with the east region of the box to its left.
+
+    The east region of the current box connects with the west region of the box to its right.
+
+4- This merging and connecting will be done using the union find algorithm.
+
+![alt text](image-16.png)
+
+
+
+
+
+
+
 
 
