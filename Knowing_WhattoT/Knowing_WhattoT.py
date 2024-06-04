@@ -150,6 +150,77 @@ obj = FreqStack()
 for i in inputs:
     obj.push(i) 
 for i in range(len(inputs)):
-        print("\t Value removed from stack is: ", obj.pop(), sep="")         
-         
-     
+        print("\t Value removed from stack is: ", obj.pop(), sep="")  
+
+## First Unique Character in a String ###########################
+def first_unique_char(s):
+    hash_map = {}
+    for c in s:
+        hash_map[c] = hash_map.get(c,0) + 1
+    for i,c in enumerate(s):    
+        if hash_map[c] == 1:
+            return i    
+    return -1    
+s = "goodmorning" 
+print(first_unique_char(s)) 
+
+## Find All Anagrams in a String ################################
+def find_anagrams(a, b): 
+    if len(b) > len(a): 
+     return []
+    hash_b = {}
+    output = []
+    for c in b:
+        hash_b[c] = hash_b.get(c,0) + 1
+    w = len(b)    
+    for i in range(len(a) -w +1):
+        hash_a = {}
+        for j in range(i,i+w):
+         hash_a[a[j]] = hash_a.get(a[j],0) + 1
+         if hash_a == hash_b:
+            output.append(i)
+    return output                       
+
+a,b = "abab" , "ab"        
+print(find_anagrams(a, b))  
+
+## Longest Palindrome by Concatenating Two-Letter Words ################
+def longest_palindrome(words): 
+    count = 0
+    central = False
+    frequencies = {} 
+    for c in words:
+        frequencies[c] = frequencies.get(c,0) + 1
+    for word,f in frequencies.items():
+        ## palindrome word
+        if word[0]==word[1]:
+            if f%2 == 0:
+              count += f
+            else:
+              count += f -1
+              central = True
+        ## none palindrome word      
+        elif word[1]>word[0]:
+           if (word[1]+word[0]) in  frequencies:
+            count += 2*min(f,frequencies[word[1]+word[0]]) 
+    if central:
+        count += 1
+    return count*2                        
+                    
+
+words = ["aa","xx","cd","xx","cc","xx","cc","aa"]
+print(longest_palindrome(words))
+
+## Ransom Note ###################
+def can_construct(ransom_note, magazine):
+   magazine_map = {}
+   for c in magazine:
+       magazine_map[c] = magazine_map.get(c,0) + 1
+   for c in ransom_note:
+       if (c in magazine_map and magazine_map[c] ==0) or (c not in magazine_map):
+           return False
+       magazine_map[c] -=1
+   return True         
+ransom_note = "code"
+magazine = "abcodf" 
+print(can_construct(ransom_note, magazine))   

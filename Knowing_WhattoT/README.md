@@ -45,6 +45,37 @@ Push(value): This is used to push an integer data onto the top of the stack.
 
 Pop(): This is used to remove and return the most frequent element in the stack.
 
+## First Unique Character in a String ##########################
+For a given string of characters, s, your task is to find the first non-repeating character and return its index. Return −1 if there’s no unique character in the given string.
+![alt text](image-4.png)
+
+## Find All Anagrams in a String #############################
+Given two strings, a and b, return an array of all the start indexes of anagrams of b in a. We may return the answer in any order.
+![alt text](image-5.png)
+
+## Longest Palindrome by Concatenating Two-Letter Words ############
+Suppose you are given an array of strings, words, and each element in the array has a length of two. You need to return the length of the longest palindrome that can be made by concatenating some elements from words. If no palindrome can be made, return 0.
+![alt text](image-6.png)
+Let’s break the problem into two cases:
+Case 1: A word is not a palindrome
+
+Consider that a word is not a palindrome. For example, “ab” is not a palindrome. To include it in a palindromic sequence, we must pair it with its reverse, “ba”. Together, they will be part of the possible palindrome.
+
+Case 2: A word is a palindrome
+
+When a word is a palindrome, there are two possibilities to consider:
+
+If the word appears an even number of times, it can be placed in the middle or on the sides of the potential palindrome.
+
+If the word appears an odd number of times, its even occurrences can be used as in step 1, and the single odd occurrence can be placed in the middle of the potential palindrome. A word that appears in the middle of a palindrome is called a central word.
+
+## Ransom Note ###################################
+Given two strings, ransom_note and magazine, check if ransom_note can be constructed using the letters from magazine. Return TRUE if it can be constructed, FALSE otherwise.
+![alt text](image-7.png)
+
+
+
+
 
 
 
