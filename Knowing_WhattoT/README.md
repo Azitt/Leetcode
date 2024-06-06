@@ -73,6 +73,7 @@ If the word appears an odd number of times, its even occurrences can be used as 
 Given two strings, ransom_note and magazine, check if ransom_note can be constructed using the letters from magazine. Return TRUE if it can be constructed, FALSE otherwise.
 ![alt text](image-7.png)
 
+this is the second round
 
 
 
