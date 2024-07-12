@@ -12,12 +12,14 @@ You are given n items whose weights and values are known, as well as a knapsack 
 
 
 # coin change#################
+Given an integer total that represents the target amount of money and a list of integers coins that represents different coin denominations, find the minimum number of coins required to make up the total amount. If it’s impossible to achieve the target amount using the given coins, return -1. If the target amount is 0, return 0.
 ![alt text](image-7.png)
 
 # Tribonacci##################
 ![alt text](image-8.png)
 
 # Partition Equal Subset Sum
+Given a non-empty array of positive integers, determine if the array can be divided into two subsets so that the sum of both subsets is equal.
 naive recursive approach
 
 ![alt text](image-9.png)

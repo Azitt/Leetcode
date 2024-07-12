@@ -29,7 +29,7 @@ print(fib_tabulation(4))
 
 ## Knapsack#################################################
 # we make a table which rows=items+1,cols=capacity+1, and with every new item we check 
-# if we can include new item or not based on the max value we got sofar and the value of current item
+# if we can include new item or not, based on the max value we got sofar and the value of current item
 
 def find_max_knapsack_profit(capacity, weights, values):
     # Create a table to hold intermediate values
@@ -55,7 +55,9 @@ values = [1, 5, 4, 8]
 capacity = 6
 print(find_max_knapsack_profit(capacity, weights, values))  
 
-###Coin Change##################################################### 
+###Coin Change#####################################################
+# we consider a counter as an array to hold the min number of coins for each value up to the total. for total = 5 counter = ['inf','inf','inf','inf','inf']
+# we recursively go through each coin of the input coins to see for each total how many coins we need -> final result is counter[total-1]
 def calculate_minimum_coins(coins, rem, counter):  #Helper function that calculates amount left to be calculated and tells what it's value can be.
     if rem < 0: 
         return -1
