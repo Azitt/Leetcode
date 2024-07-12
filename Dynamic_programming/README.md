@@ -29,7 +29,9 @@ naive recursive approach
 better approach
 
 ![alt text](image-10.png)
+
 ![alt text](image-11.png)
+![alt text](image-32.png)
 
 # bit counts######################
 ![alt text](image-12.png)
