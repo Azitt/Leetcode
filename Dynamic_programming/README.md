@@ -20,6 +20,8 @@ Given an integer total that represents the target amount of money and a list of 
 
 # Partition Equal Subset Sum
 Given a non-empty array of positive integers, determine if the array can be divided into two subsets so that the sum of both subsets is equal.
+![alt text](image-31.png)
+
 naive recursive approach
 
 ![alt text](image-9.png)
