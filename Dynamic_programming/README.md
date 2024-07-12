@@ -1,5 +1,6 @@
 # Knapsack
 You are given n items whose weights and values are known, as well as a knapsack to carry these items. The knapsack cannot carry more than a certain maximum weight, known as its capacity. You need to maximize the total value of the items in your knapsack, while ensuring that the sum of the weights of the selected items does not exceed the capacity of the knapsack.
+
 ![alt text](image-30.png)
 ![alt text](image.png)
 ![alt text](image-1.png)
