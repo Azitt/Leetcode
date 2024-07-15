@@ -44,8 +44,10 @@ Given an m×n binary matrix, mat, find the distance from each cell to the neares
 ![alt text](image-13.png)
 
 start from top-left and just check the cell above and on the left:
+
 ![alt text](image-14.png)
 then start from bottom-right and check the right and bottom cell only:
+
 ![alt text](image-15.png)
 compare the distance with the distance from first step and pick the minimum. 
 
