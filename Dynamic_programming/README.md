@@ -34,6 +34,8 @@ better approach
 ![alt text](image-32.png)
 
 # bit counts######################
+For a given positive integer, n, your task is to return an array of length n+1 such that for each x where 0≤x≤n, result[x] is the count of 1s in the binary representation of x.
+![alt text](image-33.png)
 ![alt text](image-12.png)
 
 # 01 Matrix##########################
