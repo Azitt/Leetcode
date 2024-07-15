@@ -11,11 +11,11 @@ You are given n items whose weights and values are known, as well as a knapsack 
 ![alt text](image-6.png)
 
 
-# coin change#################
+# coin change #################
 Given an integer total that represents the target amount of money and a list of integers coins that represents different coin denominations, find the minimum number of coins required to make up the total amount. If it’s impossible to achieve the target amount using the given coins, return -1. If the target amount is 0, return 0.
 ![alt text](image-7.png)
 
-# Tribonacci##################
+# Tribonacci ##################
 ![alt text](image-8.png)
 
 # Partition Equal Subset Sum
@@ -33,12 +33,12 @@ better approach
 ![alt text](image-11.png)
 ![alt text](image-32.png)
 
-# bit counts######################
+# bit counts ######################
 For a given positive integer, n, your task is to return an array of length n+1 such that for each x where 0≤x≤n, result[x] is the count of 1s in the binary representation of x.
 ![alt text](image-33.png)
 ![alt text](image-12.png)
 
-# 01 Matrix##########################
+# 01 Matrix ##########################
 ![alt text](image-13.png)
 
 start from top-left and just check the cell above and on the left:
