@@ -39,6 +39,7 @@ For a given positive integer, n, your task is to return an array of length n+1 s
 ![alt text](image-12.png)
 
 # 01 Matrix ##########################
+Given an m×n binary matrix, mat, find the distance from each cell to the nearest 0. The distance between two adjacent cells is 1. Cells to the left, right, above, and below the current cell will be considered adjacent.
 ![alt text](image-13.png)
 
 start from top-left and just check the cell above and on the left:
