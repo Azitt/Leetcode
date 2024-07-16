@@ -175,6 +175,8 @@ def bits_count(n):
             array[i] = array[i//2] + 1    
     return array
 ## 01 MAtrix########################################
+# we start from top left and just check top and left of the cell. then we start from bottom right and check the bottom and right of the cell. 
+# we pick the min of step1 and step2 as min distance.
 import math
 def update_math(mat):
     m,n = len(mat), len(mat[0])
@@ -197,7 +199,7 @@ mat = [[0, 0, 1], [0, 1, 1], [1, 0, 1]]
 print(update_math(mat))  
 
 ## House Robber II ####################################
-
+# because first house and last house are adjacent we devide the house into two set one without fist house  and another oen without last house
 def house_robbery_helper(money):
     lookup = [0]*(len(money)+1)
     lookup[1] = money[0]
