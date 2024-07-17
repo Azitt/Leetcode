@@ -74,6 +74,10 @@ Following the constraints mentioned above and given an integer array money repre
  we keep minimum here due to Multiplying a negative number by another negative number results in a positive product. Therefore, if min_so_far is negative and we encounter another negative number, the resulting product could become a new maximum.
 
 # Combination Sum ##################################
+Given an array of distinct integers, nums, and an integer, target, return a list of all unique combinations of nums where the chosen numbers sum up to the target. The combinations may be returned in any order.
+
+An integer from nums may be chosen an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen integers is different.
+
 ![alt text](image-23.png)
 
 # word break ########################################
