@@ -236,6 +236,9 @@ def max_product(nums):
 print(max_product([2,3,-2,4]))   
              
 ## Combination Sum#########################################
+# we create a dp of size of target + 1, each cell of dp shows the combination from nums that make that cell target. for exaple target = 3 dp = [,,,], 
+# then for each cell we go through all elements of nums to see if we can make any combination to create that cell total
+
 def combination_sum(nums,target):
     # dp = [[0]]*(target+1) 
     dp = [[] for _ in range(target + 1)]

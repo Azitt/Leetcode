@@ -81,6 +81,8 @@ An integer from nums may be chosen an unlimited number of times. Two combination
 ![alt text](image-23.png)
 
 # word break ########################################
+Given a string, s, and a dictionary of strings, word_dict, check if s can be segmented into a space-separated sequence of one or more dictionary words. If yes, return TRUE; else, return FALSE.
+
 ![alt text](image-24.png)
 
 # Palindromic Substrings ############################
