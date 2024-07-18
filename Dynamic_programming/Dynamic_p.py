@@ -259,11 +259,27 @@ target = 6
 print(combination_sum(nums,target)) 
 
 # word break#################################################
+## naive way###################################
+# s.startswith(word) check if s from position 0 starts with word
+def word_break(s, word_dict):
+    if not s:
+        return True
+    
+    for word in word_dict:
+        if s.startswith(word):
+            if word_break(s[len(word):], word_dict):
+                return True
+                
+    return False
+### DP way ##################################
+# use a lookup table, dp, of size len(s)+1, we check s[j..i] to find any possible prefix then check dp[j] to see if it's true, if both conditions are true
+# dep[0] = RUE because an empty string is assumed to be a valid word in the dictionary. 
+# the good thing about this method is when we found s[j:i] we don't go check smaller one and we break and by checking dp[j]= true we check if previous string was there
 def word_break(s,word_dict):
     n= len(s)
     dp =[False]*(n+1)  
     word_set = set(word_dict)
-    dp[0] = True
+    dp[0] = True # 
     for i in range(1,n+1):
       for j in range(i):
           if dp[j] and s[j:i] in word_set:
@@ -275,6 +291,9 @@ word_dict = ["an","and","veg","vegans"]
 print(word_break(s,word_dict))
 
 # Palindromic Substrings######################################
+# we pick a dp = n*n, n = len(string), diagonal of the dp[i][i] = True which is substring length1, for sunstring length 2 we check s[i][i+1] and update dp[i][i+1]
+# then we check substring > 2, here we check the first and last element of sub with string and the rest will be check with dp. ex we have s = peew to compare 
+# we use dp[0][3] = dp[1][2] and(s[0]==s[3])
 def count_palindromic_substrings(s):    
     n = len(s)
     dp = [[False for i in range(n)] for i in range(n)]

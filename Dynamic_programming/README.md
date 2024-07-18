@@ -86,6 +86,7 @@ Given a string, s, and a dictionary of strings, word_dict, check if s can be seg
 ![alt text](image-24.png)
 
 # Palindromic Substrings ############################
+Given a string, s, return the number of palindromic substrings contained in it. A substring is a contiguous sequence of characters in a string. A palindrome is a phrase, word, or sequence that reads the same forward and backward.
 ![alt text](image-26.png)
 
 ![alt text](image-25.png)
