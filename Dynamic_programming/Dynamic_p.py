@@ -315,6 +315,8 @@ s = "peeweep"
 print(count_palindromic_substrings(s)) 
 
 ###  Longest Common Subsequence ####################
+# to avoid duplicte work we use dp =len(str1)*len(str2) => and pick two pointer i , j for str1 and str2 if str[i]==str[j] we increase both i,j
+# and keep recursive elif str[i]!=str[j] we i+1 recursivly then j+1 and we return dp[i][j] at the end 
 def longest_common_subsequence_rec(i,j,dp,str1, str2):
     if i== len(str1) or j==len(str2):
         return 0
