@@ -15,6 +15,8 @@ s = "catsanddog"
 word_dict = ["cat", "cats", "and", "sand", "dog"]
 print(word_break2(s, word_dict))
 ###dynamic programming approach#########################
+# we make a dp which its index is index length of prefix in word_dict exp dp[3] = "cat", we grab the prefix from input string and go through all suffix of that prefix 
+# to see which one is in the word_dic if a suffix was in the word_dict we check the dp[j] as well and add them into temp.
 def word_break2(s, word_dict):
     dp = [[]] * (len(s) + 1)
     dp[0] = [""]
